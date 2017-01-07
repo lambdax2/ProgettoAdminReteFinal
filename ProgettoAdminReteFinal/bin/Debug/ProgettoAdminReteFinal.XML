@@ -1,0 +1,593 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProgettoAdminReteFinal</name>
+    </assembly>
+    <members>
+        <member name="T:ProgettoAdminReteFinal.addGraphForm">
+            <summary>
+            Class dedicated to handle additional graph form.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.addGraphForm.addGraphForm_FormClosing(System.Object,System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            addgraph form closing event handler
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.addGraphForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.addGraphForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.addGraphForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.addGraphForm.zgStdDev">
+            Graph representing standard deviation
+        </member>
+        <member name="F:ProgettoAdminReteFinal.addGraphForm.zgXAxis">
+            Graph representing pelvis accelerometer x axis values
+        </member>
+        <member name="T:ProgettoAdminReteFinal.comHandler">
+            <summary>
+            Class dedicated to handling communication with client
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.clientComSocket">
+            communication socket
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.readThread">
+            reading thread
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.lthread">
+            listening thread, used to listen for client connections
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.tcpl">
+            tcplistener, waits for tcp connections
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.c">
+            counter var
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.count">
+            tracks number of packets read
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.acc">
+            contains moduled accelerometer values, storing a counter in .x and the moduled values in .y 
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.gir">
+            contains moduled gyroscope values, storing a counter in .x and the moduled values in .y 
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.mag">
+            contains moduled magnetometer values, storing a counter in .x and the moduled values in .y 
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.rawAcc">
+            contains single components of accelerometer, storing single components into .x .y and .z 
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.rawGyr">
+            contains single components of gyroscope, storing single components into .x .y and .z 
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.rawMag">
+            contains single components of magnetometer, storing single components into .x .y and .z 
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.devstd">
+            standard deviation pointpairlist
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.accx">
+            pelvis accelerometer x axis values
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.lastDevStd">
+            help variable
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.nSensors">
+            number of sensors
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.bStartStopFlag">
+            flag that defines if bstartstop has to work like a start button(flag = true) or a stop button(flag=false)
+        </member>
+        <member name="F:ProgettoAdminReteFinal.comHandler.heading">
+            heading pointpairlist, used for tracking heading direction and calculate width of turns
+        </member>
+        <member name="M:ProgettoAdminReteFinal.comHandler.bStart_Click(System.Object,System.EventArgs)">
+            <summary>
+            Button start/stop click event handler
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.comHandler.clientListenStart">
+            <summary>
+            listen thread, waits until he find a socket to connect to and when found calls the class constructor comhandler that 
+            starts the reading of data
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.comHandler.#ctor(System.Net.Sockets.Socket)">
+            <summary>
+            class constructor, starts the thread that is going to read data
+            </summary>
+            <param name="clientCSocket">Client communication socket</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.comHandler.readData">
+            <summary>
+            Reading Thread, read data sent by the client, stores it into lists, and calls the program functions.
+            </summary>
+        </member>
+        <member name="T:ProgettoAdminReteFinal.exportForm">
+            <summary>
+            Class dedicated to handle export related events and export operations
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.exportForm.bBrowse_Click(System.Object,System.EventArgs)">
+            <summary>
+            Allow user to chose the folder where we are going to export
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.exportForm.bExport_Click(System.Object,System.EventArgs)">
+            <summary>
+            Export log, graphs and a csv file of values into the folder chosen by the user with the bBrowse_Click method, by default C:\
+            and add the subfolder named \\export_day_month_year_hour_minute\\
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.exportForm.bCancel_Click(System.Object,System.EventArgs)">
+            <summary>
+            button cancel click event handler.
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.exportForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.exportForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.exportForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.exportForm.tbSavePath">
+            Path where images of graphs, log and file with values will be exported
+        </member>
+        <member name="F:ProgettoAdminReteFinal.exportForm.bBrowse">
+            Button to open folder browser
+        </member>
+        <member name="F:ProgettoAdminReteFinal.exportForm.bExport">
+            Button to start the export process
+        </member>
+        <member name="F:ProgettoAdminReteFinal.exportForm.folderBrowserDialog">
+            Dialog used to select the export folder
+        </member>
+        <member name="F:ProgettoAdminReteFinal.exportForm.bCancel">
+            Button to cancel the export
+        </member>
+        <member name="T:ProgettoAdminReteFinal.functions">
+            <summary>
+            Class that encloses principal functions of te project
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.functions.maxTurn">
+            variable used to keep track of the turn width (when Classifyer is not activated, when classifyer is activated maxTurn is unused)
+        </member>
+        <member name="F:ProgettoAdminReteFinal.functions.stationingStatus">
+            variable used to track status of movement of the person. codes: 1 -> steady , 2 -> not steady
+        </member>
+        <member name="F:ProgettoAdminReteFinal.functions.activityStatus">
+            variable used to track current activity of the person. codes: 0 -> start , 1 -> lay , 2 -> lay/sit , 3 -> sit , 4 -> stand
+        </member>
+        <member name="F:ProgettoAdminReteFinal.functions.turningStarted">
+            @name turn find variables
+            variables for turn finding 
+            @{
+            variable useed to define when a turn start has been detected
+        </member>
+        <member name="F:ProgettoAdminReteFinal.functions.turnCounter">
+            variable used to track the number of turns
+        </member>
+        <member name="F:ProgettoAdminReteFinal.functions.start">
+            @name variables for showing turn detection points (start and stop points)
+            start point is the first sample of the first window where a turn has been detected.
+            stop point is the last sample of the window where a turn stop has been detected. 
+            @{
+        </member>
+        <member name="M:ProgettoAdminReteFinal.functions.smoothing(System.Collections.Generic.List{ZedGraph.PointPairList},System.Int32,System.Int32)">
+            <summary>
+            Smoothing
+            </summary>
+            <param name="lppl">list of pointpairlist each contatining values to smooth</param>
+            <param name="smoothWin">dimension of the smoothing window</param>
+            <param name="index">index of the pointpairlist to smooth</param>
+            <returns>smoothed list of pointpairlist lppl</returns>
+            <remarks>The type of smoothing used is box smoothing (also called moving average)</remarks>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.functions.smoothing(ZedGraph.PointPairList,System.Int32)">
+            <summary>
+            smoothing , one-line graph version
+            </summary>
+            <param name="ppl">pointpairlist containing values to smooth</param>
+            <param name="smoothWin">dimension of the smoothing window</param>
+            <returns>smoothed pointpairlist ppl</returns>
+            <remarks>The type of smoothing used is box smoothing (also called moving average)</remarks>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.functions.stationing(System.Double,System.Double,System.Int32)">
+            <summary>
+            Stationing function, used for defining the state of movement (steady or not) 
+            </summary>
+            <param name="devStd">standard deviation</param>
+            <param name="stationingLimit">limit to pass to get into "not steady" status</param>
+            <param name="count">sample number, used to estimate activity time by doing count * 0.02(0.02 derives from 50 Hz transmission frequency)</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.functions.activityDiscover(ZedGraph.PointPairList,System.Int32,System.Int32)">
+            <summary>
+            ActivityDiscover function focus on discovering the activity (lay,sit,stand) of the person
+            </summary>
+            <param name="pplAccX">pointpairlist containing values of x axis of pelvis accelerometer</param>
+            <param name="activityWindow">dimension of work window</param>
+            <param name="count">sample number, used to estimate activity time by doing count * 0.02(0.02 derives from 50 Hz transmission frequency)</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.functions.turnDiscover(ZedGraph.PointPairList,ZedGraph.PointPairList,System.Int32,System.Double,System.Double,System.Int32,ZedGraph.PointPairList)">
+            <summary>
+            turnDiscover Function focus on recognizing turns made
+            </summary>
+            <param name="gyrPPL">pointpairlist containing values of pelvis gyroscope</param>
+            <param name="magPPL">pointpairlist containing values of pelvis magnetometer</param>
+            <param name="turnWindow">dimension of the turning window observed</param>
+            <param name="minTurn">limit value that defines if the turn has a min value</param>
+            <param name="turnLimit90_180">limit value that distinguish from turns less than 90 degrees and more than 90 degrees</param>
+            <param name="count">number of sample, used to do an estimation of the end time of the turn by doing count * 0.02(0.02 derives from 50 Hz transmission frequency)</param>
+            <param name="heading">heading is a pointpairlist containing estimated north direction. It's used by classify sub-method to calculate the width of the turn</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.functions.classify(ZedGraph.PointPairList,System.Int32,System.Int32,System.Boolean@,System.Double@)">
+            <summary>
+            classify function focus on the calssification of turns made by receiving in input the heading pointpairlistand the
+            indexes of start and stop of the turn.
+            This function has a void return tipe but still gives output using out params. The out params are : a bool to define if the turn made was left or right
+            and a double that defines the width of the turn.
+            </summary>
+            <param name="heading">pointpairlist contatining the heading</param>
+            <param name="start">turn start index</param>
+            <param name="stop">turn stop index</param>
+            <param name="left">out parameter, defines if a turn was left (true) or right (false)</param>
+            <param name="rot">out parameter, defines the width of the turn</param>
+        </member>
+        <member name="T:ProgettoAdminReteFinal.graphHandler">
+            <summary>
+            Class dedicated to graph handling (creation, refresh, clear and modify)
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.graphHandler.pane">
+            enclose all elements associated to a graph
+        </member>
+        <member name="M:ProgettoAdminReteFinal.graphHandler.#ctor(ZedGraph.ZedGraphControl,System.String,System.String,System.String)">
+            <summary>
+            graphHandler constructor, used to construct accelerometer gyroscope and magnetometer graphs
+            </summary>
+            <param name="zgc">Name of the control</param>
+            <param name="title">Title of the graph</param>
+            <param name="titleX">Graph title on x axis</param>
+            <param name="titleY">Graph title on y axis</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.graphHandler.#ctor(ZedGraph.ZedGraphControl,System.String,System.String,System.String,System.String)">
+            <summary>
+            graphHandler constructor, used to construct one-line graphs such as standard deviation graph accelerometer x axis graphs
+            </summary>
+            <param name="zgc">Name of the control</param>
+            <param name="title">Title of the graph</param>
+            <param name="titleX">Graph title on x axis</param>
+            <param name="titleY">Graph title on y axis</param>
+            <param name="label">Name of the curve</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.graphHandler.draw(ZedGraph.ZedGraphControl,System.Collections.Generic.List{ZedGraph.PointPairList},System.Int32)">
+            <summary>
+            Draw method for 5-lines graphs (accelerometer gyroscope and magnetometer graphs) 
+            </summary>
+            <param name="zgc">Name of the control/component where we are going to add data</param>
+            <param name="data">Source of the data</param>
+            <param name="smoothWin">Smoothing window dimension</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.graphHandler.draw(ZedGraph.ZedGraphControl,ZedGraph.PointPairList,System.Int32)">
+            <summary>
+            Draw method for single-line graphs (accelerometer x axis , standard deviation)
+            </summary>
+            <param name="zgc">Name of the control/component where we are going to add data</param>
+            <param name="data">Source of the data</param>
+            <param name="smoothWin">Smoothing window dimension</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.graphHandler.drawLast(ZedGraph.ZedGraphControl,System.Collections.Generic.List{ZedGraph.PointPairList},System.Int32)">
+            <summary>
+            Method used to draw points that are not drawn yet when the reading loop ends
+            </summary>
+            <param name="zgc">Name of the control where we are going to add data</param>
+            <param name="data">Source of the data</param>
+            <param name="count">Number of points read</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.graphHandler.drawLast(ZedGraph.ZedGraphControl,ZedGraph.PointPairList,System.Int32)">
+            <summary>
+            Method used to draw points that are not drawn yet when the reading loop ends - version for one-line graphs
+            </summary>
+            <param name="zgc">Name of the zedGraphControl where we are going to add data</param>
+            <param name="data">Source of the data</param>
+            <param name="count">Number of points read</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.graphHandler.stateChanged(System.Object,System.EventArgs)">
+            <summary>
+            Method to show/hide lines in graphs.
+            </summary>
+            <param name="sender">Identifies the checkbox that has been checked/unckecked</param>
+            <param name="e"> Unused -- Arguments of the event:click position and button click</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.graphHandler.cbTurnStartStopShow_stateChanged(System.Object,System.EventArgs)">
+            <summary>
+            Combo box turnStartStopShow state changed event handler, it gives the user the possibility to show/hide
+            vertical lines indicating start and stop of turns
+            </summary>
+            <param name="sender">Identifies the checkbox that has been checked/unckecked, in this case cbTurnStartStopShow</param>
+            <param name="e">Unused -- Arguments of the event:click position and button click</param>
+        </member>
+        <member name="T:ProgettoAdminReteFinal.mainForm">
+            <summary>
+            Class dedicated to handle main form events
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.agf">
+            addGraphForm: form where user can find standard deviation and accelerometer x axis graphs
+        </member>
+        <member name="M:ProgettoAdminReteFinal.mainForm.mainForm_Load(System.Object,System.EventArgs)">
+            <summary>
+            When loading the main form we add all event handlers, create a new addgraphform and initialize graphs
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.mainForm.bSettings_Click(System.Object,System.EventArgs)">
+            <summary>
+            settings button click event handler
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.mainForm.bExport_Click(System.Object,System.EventArgs)">
+            <summary>
+            Export button click event handler
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.mainForm.bAddGraphs_Click(System.Object,System.EventArgs)">
+            <summary>
+            Additional graphs click event handler
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.mainForm.addText(System.String,System.Int32)">
+            <summary>
+            Addtext method. Method used to add text into log box
+            </summary>
+            <param name="s">String to add into log</param>
+            <param name="code">Integer that indicates how to format the string</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.mainForm.bReset_Click(System.Object,System.EventArgs)">
+            <summary>
+            Reset button click event handler, starts a new application and kills the current one
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.mainForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.mainForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.zgAcc">
+            Graph displaying accelerometer data
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.zgGir">
+            Graph displaying gyroscope data
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.zgMag">
+            Graph displaying magnetometer data
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.tbLog">
+            Log textbox
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.bStartStop">
+            Button to start/stop the server
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.bSettings">
+            Button to open setting form
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.bExport">
+            Button to open export form
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.bAddGraphs">
+            Button to open additional graph form
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.cbPelvis">
+            @name checkGroup
+            Checkboxes uset to show/hide lines in graphs.
+            @{
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.label1">
+            @} 
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.bReset">
+            Button to reset the server
+        </member>
+        <member name="F:ProgettoAdminReteFinal.mainForm.cbTurnStartStopShow">
+            Button to show start and stop points of the turns (start is represented by a vertical blueviolet line, stop is represented by a vertical aqua line)
+        </member>
+        <member name="T:ProgettoAdminReteFinal.Prog">
+            <summary>
+            class containing main
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.Prog.mf">
+            main form
+        </member>
+        <member name="T:ProgettoAdminReteFinal.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ProgettoAdminReteFinal.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ProgettoAdminReteFinal.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:ProgettoAdminReteFinal.settingForm">
+            <summary>
+            Class dedicated to the management of application settings.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.settingForm.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.settingForm.settingForm_Load(System.Object,System.EventArgs)">
+            <summary>
+            Setting form loading event handler.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.settingForm.serverSettings_OnClose(System.Object,System.EventArgs)">
+            <summary>
+            Setting form closing event handler. P.S. exiting without applying settings will result in a loss of changes made.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.settingForm.bApply_Click(System.Object,System.EventArgs)">
+            <summary>
+            Apply button click event handler.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.settingForm.bCancel_Click(System.Object,System.EventArgs)">
+            <summary>
+            Cancel button click event handler.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.settingForm.tb_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            key press event handler.
+            discard anything that isn't a number or backspace.
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.settingForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.settingForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.tbIP1">
+            @name ipGroup
+            Ip textboxes.
+            @{
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.tbPort">
+            @}
+            Port textbox
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.cbFrequency">
+            Combobox to chose frequency
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.nudSmoothWindow">
+            Numeric up-down to increase/decrease smoothing window
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.nudActivityWindow">
+            Numeric up-down to increase/decrease activity detection window
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.nudTurnWindow">
+            Numeric up-down to increase/decrease turn detection window
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.nudMinTurn">
+            Numeric up-down to increase/decrease min turn value
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.nudTurnLimit">
+            Numeric up-down to increase/decrease turn limit that divide under 90° turns from over 90° turns
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.bApply">
+            Button to save settings
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.bCancel">
+            Button to cancel changes done
+        </member>
+        <member name="F:ProgettoAdminReteFinal.settingForm.nudStationingRound">
+            Numeric up-down to increase/decrease the stationing round
+        </member>
+        <member name="T:ProgettoAdminReteFinal.utilityes">
+            <summary>
+            Class that encloses all the functions that supports the main ones stored into functions class. 
+            </summary>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.utilityes.module(System.Double,System.Double,System.Double)">
+            <summary>
+            Module function.
+            </summary>
+            <param name="v1"> First value</param>
+            <param name="v2"> Second value</param>
+            <param name="v3"> Third value</param>
+            <returns>Module of the values</returns>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.utilityes.devStd(ZedGraph.PointPairList,System.Int32)">
+            <summary>
+            Standard deviation function, calculates the standard deviation from moduled values of pelvis accelerometer, devStd = sqrt(sum{1,N}((x-medValue)^2) / N))
+            </summary>
+            <param name="ppl">List of points</param>
+            <param name="winDimension">Dimension of the window of values on wich we are going to calculate standard deviation</param>
+            <returns>Standard deviation of values into the window</returns>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.utilityes.average(ZedGraph.PointPairList,System.Int32)">
+            <summary>
+            Average function, calculates the average on last n elements of the pointpairlist passed as parameter.
+            </summary>
+            <param name="ppl">List of points</param>
+            <param name="n">Number of values that will be used to calculate average</param>
+            <returns>Average of the last n values of the list</returns>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.utilityes.magPIFix(System.Collections.Generic.List{ZedGraph.PointPairList},System.Int32)">
+            <summary>
+            magPIFix is a function used to remove discontinuity of magnetometer signal
+            </summary>/
+            <param name="mag">Magnetometer values</param>
+            <param name="index">Index of the magnetometer that has to be fixed in the list</param>
+            <returns>Fixed list of values</returns>
+        </member>
+        <member name="M:ProgettoAdminReteFinal.utilityes.calculate_heading(System.Double,System.Double)">
+            <summary>
+            calculate_heading is a function that is used to determinate the north direction to discover the turn amplitude.
+            http://www51.honeywell.com/aero/common/documents/myaerospacecatalog-documents/Defense_Brochures-documents/Magnetic__Literature_Application_notes-documents/AN203_Compass_Heading_Using_Magnetometers.pdf
+            </summary>
+            <param name="y">y axis</param>
+            <param name="z">z axis</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

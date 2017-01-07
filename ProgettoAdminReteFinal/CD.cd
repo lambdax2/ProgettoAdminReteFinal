@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="ProgettoAdminReteFinal.addGraphForm">
+    <Position X="3" Y="0.5" Width="2.75" />
+    <Members>
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="zgStdDev" Hidden="true" />
+      <Field Name="zgXAxis" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAgAAAAQACAAAA=</HashCode>
+      <FileName>addGraphForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgettoAdminReteFinal.comHandler">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAAUAGAAMAkAAAQRAQAAAAACADAAACKAAAAAAAAAKA=</HashCode>
+      <FileName>comHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgettoAdminReteFinal.exportForm">
+    <Position X="11.5" Y="2.25" Width="1.75" />
+    <Members>
+      <Field Name="bBrowse" Hidden="true" />
+      <Field Name="bCancel" Hidden="true" />
+      <Field Name="bExport" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="folderBrowserDialog" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="tbSavePath" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACAAAAABAgCAAAIDAAAAAAAABAAEAAAAABA=</HashCode>
+      <FileName>exportForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgettoAdminReteFinal.functions">
+    <Position X="3" Y="2.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAEAAAAEAAAAAAAAgAAAABAAgQQAAAAAAIA=</HashCode>
+      <FileName>functions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgettoAdminReteFinal.graphHandler">
+    <Position X="8.75" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAEAEAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>graphHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgettoAdminReteFinal.Prog">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Prog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgettoAdminReteFinal.mainForm">
+    <Position X="6.5" Y="2.5" Width="2" />
+    <Members>
+      <Field Name="bAddGraphs" Hidden="true" />
+      <Field Name="bExport" Hidden="true" />
+      <Field Name="bReset" Hidden="true" />
+      <Field Name="bSettings" Hidden="true" />
+      <Field Name="bStartStop" Hidden="true" />
+      <Field Name="cbLeftAnkle" Hidden="true" />
+      <Field Name="cbLeftWrist" Hidden="true" />
+      <Field Name="cbPelvis" Hidden="true" />
+      <Field Name="cbRightAnkle" Hidden="true" />
+      <Field Name="cbRightWrist" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="tbLog" Hidden="true" />
+      <Field Name="zgAcc" Hidden="true" />
+      <Field Name="zgGir" Hidden="true" />
+      <Field Name="zgMag" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>QEgAQAEAATAAQBAAEgCAAQACABAEgIAAAIREgAAAAAA=</HashCode>
+      <FileName>mainForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgettoAdminReteFinal.settingForm">
+    <Position X="8.75" Y="0.5" Width="2.5" />
+    <Members>
+      <Field Name="bApply" Hidden="true" />
+      <Field Name="bCancel" Hidden="true" />
+      <Field Name="cbFrequency" Hidden="true" />
+      <Field Name="components" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Field Name="groupBox1" Hidden="true" />
+      <Field Name="groupBox2" Hidden="true" />
+      <Field Name="groupBox3" Hidden="true" />
+      <Method Name="InitializeComponent" Hidden="true" />
+      <Field Name="label" Hidden="true" />
+      <Field Name="label1" Hidden="true" />
+      <Field Name="label10" Hidden="true" />
+      <Field Name="label11" Hidden="true" />
+      <Field Name="label12" Hidden="true" />
+      <Field Name="label2" Hidden="true" />
+      <Field Name="label3" Hidden="true" />
+      <Field Name="label4" Hidden="true" />
+      <Field Name="label5" Hidden="true" />
+      <Field Name="label6" Hidden="true" />
+      <Field Name="label7" Hidden="true" />
+      <Field Name="label8" Hidden="true" />
+      <Field Name="label9" Hidden="true" />
+      <Field Name="nudActivityWindow" Hidden="true" />
+      <Field Name="nudMinTurn" Hidden="true" />
+      <Field Name="nudSmoothWindow" Hidden="true" />
+      <Field Name="nudStationingRound" Hidden="true" />
+      <Field Name="nudTurnLimit" Hidden="true" />
+      <Field Name="nudTurnWindow" Hidden="true" />
+      <Field Name="tbIP1" Hidden="true" />
+      <Field Name="tbIP2" Hidden="true" />
+      <Field Name="tbIP3" Hidden="true" />
+      <Field Name="tbIP4" Hidden="true" />
+      <Field Name="tbPort" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>cgAAAAAAACAAJRAAAACAABIGwACBAAABBaAAAACBAAA=</HashCode>
+      <FileName>settingForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProgettoAdminReteFinal.utilityes">
+    <Position X="6" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAEABAAAAAAAAAAAAAAAAAAAAAAAAAAgAAg=</HashCode>
+      <FileName>utilityes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
