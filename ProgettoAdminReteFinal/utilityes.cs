@@ -72,7 +72,7 @@ namespace ProgettoAdminReteFinal
         /// <param name="mag">Magnetometer values</param>
         /// <param name="index">Index of the magnetometer that has to be fixed in the list</param>
         /// <returns>Fixed list of values</returns>
-        public static List<PointPairList> magPIFix(List<PointPairList> mag, int index)
+        public static List<PointPairList> magnetometerDiscontinuityFix(List<PointPairList> mag, int index)
         {
             if (mag[index].Count > 1)
             {

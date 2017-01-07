@@ -34,27 +34,27 @@ namespace ProgettoAdminReteFinal
         /**tracks number of packets read*/
         public static int count = 1;
         /**contains moduled accelerometer values, storing a counter in .x and the moduled values in .y */
-        public static List<PointPairList> acc;
+        public static List<PointPairList> accelerometer;
         /**contains moduled gyroscope values, storing a counter in .x and the moduled values in .y */
-        public static List<PointPairList> gir;
+        public static List<PointPairList> gyrometer;
         /**contains moduled magnetometer values, storing a counter in .x and the moduled values in .y */
-        public static List<PointPairList> mag;
+        public static List<PointPairList> magnetometer;
         /**contains single components of accelerometer, storing single components into .x .y and .z */
-        public static List<PointPairList> rawAcc;
+        public static List<PointPairList> rawAccelerometer;
         /**contains single components of gyroscope, storing single components into .x .y and .z */
-        public static List<PointPairList> rawGyr;
+        public static List<PointPairList> rawGyrometer;
         /**contains single components of magnetometer, storing single components into .x .y and .z */
-        public static List<PointPairList> rawMag;
+        public static List<PointPairList> rawMagnetometer;
         /**standard deviation pointpairlist*/
-        public static PointPairList devstd;
+        public static PointPairList standardDeviation;
         /**pelvis accelerometer x axis values*/
-        public static PointPairList accx;
+        public static PointPairList accelerometerXaxis;
         /**help variable*/
-        public double lastDevStd = 0;
+        public double lastStandardDeviation = 0;
         /**number of sensors*/
         public static int nSensors = 0;
         /**flag that defines if bstartstop has to work like a start button(flag = true) or a stop button(flag=false)*/
-        private static bool bStartStopFlag = true;
+        private static bool buttonStartStopFlag = true;
         /**heading pointpairlist, used for tracking heading direction and calculate width of turns*/
         private static PointPairList heading;
 
@@ -63,14 +63,14 @@ namespace ProgettoAdminReteFinal
         /// </summary>
         public static void bStart_Click(object sender, EventArgs e)
         {
-            if (bStartStopFlag)
+            if (buttonStartStopFlag)
             {
                 //Server not yet started -> the button will work as start button
                 ((Button)sender).Text = "Stop";
                 ((Button)sender).Enabled = false;
-                bStartStopFlag = false;
+                buttonStartStopFlag = false;
                 //disable settings button
-                Prog.mf.bSettings.Enabled = false;
+                Prog.mainForm.buttonSettings.Enabled = false;
 
                 //configuring & starting tcplistner
                 string _s = Properties.Settings.Default.IP1.ToString() + '.' + Properties.Settings.Default.IP2.ToString() + '.' + Properties.Settings.Default.IP3.ToString() + '.' + Properties.Settings.Default.IP4.ToString();
@@ -82,13 +82,13 @@ namespace ProgettoAdminReteFinal
                 lthread = new Thread( () => clientListenStart() );  // () => clientListenStart()  <===>  new Thread(new ThreadStart(clientListenStart))  <===>  new Thread(clientListenStart).Start()) 
                 lthread.Name = "Listen Thread";
                 lthread.Start();
-                Prog.mf.addText("Server started, listening on " + _ip.ToString() + ":" + _port.ToString() + "\t\t",0);
+                Prog.mainForm.addText("Server started, listening on " + _ip.ToString() + ":" + _port.ToString() + "\t\t",0);
             }
             else
             {
                 //already started so button will work as stop button
-                bStartStopFlag = true;
-                Prog.mf.bSettings.Enabled = true;
+                buttonStartStopFlag = true;
+                Prog.mainForm.buttonSettings.Enabled = true;
                 //stop button will truncate the data transmission
                 clientComSocket.Close();
                 clientComSocket = null;
@@ -127,25 +127,25 @@ namespace ProgettoAdminReteFinal
             //var init
             c = 0;
             count = 1;
-            acc = new List<PointPairList>();
-            gir = new List<PointPairList>();
-            mag = new List<PointPairList>();
-            rawAcc = new List<PointPairList>();
-            rawGyr = new List<PointPairList>();
-            rawMag = new List<PointPairList>();
+            accelerometer = new List<PointPairList>();
+            gyrometer = new List<PointPairList>();
+            magnetometer = new List<PointPairList>();
+            rawAccelerometer = new List<PointPairList>();
+            rawGyrometer = new List<PointPairList>();
+            rawMagnetometer = new List<PointPairList>();
 
-            accx = new PointPairList();
-            devstd = new PointPairList();
+            accelerometerXaxis = new PointPairList();
+            standardDeviation = new PointPairList();
             heading = new PointPairList();
 
             for (int i = 0; i < 5; i++)
             {
-                acc.Add(new PointPairList());
-                gir.Add(new PointPairList());
-                mag.Add(new PointPairList());
-                rawAcc.Add(new PointPairList());
-                rawGyr.Add(new PointPairList());
-                rawMag.Add(new PointPairList());
+                accelerometer.Add(new PointPairList());
+                gyrometer.Add(new PointPairList());
+                magnetometer.Add(new PointPairList());
+                rawAccelerometer.Add(new PointPairList());
+                rawGyrometer.Add(new PointPairList());
+                rawMagnetometer.Add(new PointPairList());
             }
 
             byte[] len = new byte[2];
@@ -153,7 +153,7 @@ namespace ProgettoAdminReteFinal
             byte[] pacchetto;
             int byteToRead, maxSensori = 5;
 
-            Prog.mf.addText("Client connected \t\t \r\n",0);
+            Prog.mainForm.addText("Client connected \t\t \r\n",0);
 
             try
             {
@@ -216,11 +216,11 @@ namespace ProgettoAdminReteFinal
                         t[x] = 5 + (52 * x);
                     }
 
-                    Prog.mf.addText("Data Receive Start...  \t\t \r\n",0);
+                    Prog.mainForm.addText("Data Receive Start...  \t\t \r\n",0);
 
-                    Prog.mf.bStartStop.Invoke((MethodInvoker)delegate()
+                    Prog.mainForm.buttonStartStop.Invoke((MethodInvoker)delegate()
                     {
-                        Prog.mf.bStartStop.Enabled = true;
+                        Prog.mainForm.buttonStartStop.Enabled = true;
                     });
 
                     //reading loop
@@ -261,33 +261,33 @@ namespace ProgettoAdminReteFinal
                         for (int j = 0; j < nSensors; j++)
                         {
                             //Accelerometer: adding module to acc list and single components to rawAcc list
-                            acc[j].Add(count, utilityes.module(array[j][0], array[j][1], array[j][2]));
-                            rawAcc[j].Add(new PointPair(array[j][0], array[j][1], array[j][2]));
-                            acc = functions.smoothing(acc, Properties.Settings.Default.SmoothingWindow,c);
+                            accelerometer[j].Add(count, utilityes.module(array[j][0], array[j][1], array[j][2]));
+                            rawAccelerometer[j].Add(new PointPair(array[j][0], array[j][1], array[j][2]));
+                            accelerometer = functions.smoothing(accelerometer, Properties.Settings.Default.SmoothingWindow,c);
 
                             if (j == 0) //pelvis -> j=0, accelerometer x axis -> [][0] => array[0][0] datas
                             {
-                                accx.Add(count, array[j][0]); //save value in a point pair list
-                                accx = functions.smoothing(accx, Properties.Settings.Default.SmoothingWindow); //smooth accelerometer x values
+                                accelerometerXaxis.Add(count, array[j][0]); //save value in a point pair list
+                                accelerometerXaxis = functions.smoothing(accelerometerXaxis, Properties.Settings.Default.SmoothingWindow); //smooth accelerometer x values
                             }
 
                             //gyroscope: same as accelerometer , save module in gyr list and single components in rawGyr
-                            gir[j].Add(count, utilityes.module(array[j][3], array[j][4], array[j][5]));
-                            rawGyr[j].Add(new PointPair(array[j][3], array[j][4], array[j][5]));
-                            gir = functions.smoothing(gir, Properties.Settings.Default.SmoothingWindow,c); 
+                            gyrometer[j].Add(count, utilityes.module(array[j][3], array[j][4], array[j][5]));
+                            rawGyrometer[j].Add(new PointPair(array[j][3], array[j][4], array[j][5]));
+                            gyrometer = functions.smoothing(gyrometer, Properties.Settings.Default.SmoothingWindow,c); 
 
                             //magnetometer as above but with one more operation: magPIFix function
-                            mag[j].Add(count, Math.Atan2(array[j][7], array[j][8]));
-                            rawMag[j].Add(new PointPair(array[j][6], array[j][7], array[j][8]));
-                            mag = utilityes.magPIFix(mag, j);
-                            mag = functions.smoothing(mag, Properties.Settings.Default.SmoothingWindow,c);
+                            magnetometer[j].Add(count, Math.Atan2(array[j][7], array[j][8]));
+                            rawMagnetometer[j].Add(new PointPair(array[j][6], array[j][7], array[j][8]));
+                            magnetometer = utilityes.magnetometerDiscontinuityFix(magnetometer, j);
+                            magnetometer = functions.smoothing(magnetometer, Properties.Settings.Default.SmoothingWindow,c);
 
                             if (j == 0)
                             {
                                 heading.Add(count, utilityes.calculate_heading(array[j][7], array[j][8]));
                                 //searching for turns (when we have enough datas)
                                 if (count >= Properties.Settings.Default.TurnWindow)
-                                    functions.turnDiscover(gir[0], mag[0], Properties.Settings.Default.TurnWindow, Properties.Settings.Default.MinTurnValue, Properties.Settings.Default.TurnLimit90_180, count, heading);
+                                    functions.turnDiscover(gyrometer[0], magnetometer[0], Properties.Settings.Default.TurnWindow, Properties.Settings.Default.MinTurnValue, Properties.Settings.Default.TurnLimit90_180, count, heading);
 
                             }
                             //removing processed data
@@ -300,24 +300,24 @@ namespace ProgettoAdminReteFinal
                         //if we have a window of values, run the functions
                         if(count % Properties.Settings.Default.ActivityWindow == 0)
                         {
-                            lastDevStd = utilityes.devStd(acc[0], Properties.Settings.Default.ActivityWindow);
-                            functions.stationing(lastDevStd, Properties.Settings.Default.stationingRound,count);
-                            functions.activityDiscover(accx, Properties.Settings.Default.ActivityWindow,count);
+                            lastStandardDeviation = utilityes.devStd(accelerometer[0], Properties.Settings.Default.ActivityWindow);
+                            functions.stationing(lastStandardDeviation, Properties.Settings.Default.stationingRound,count);
+                            functions.activityDiscover(accelerometerXaxis, Properties.Settings.Default.ActivityWindow,count);
                         }
 
                         //dev standard is calculated at fixed intervals (activity window, default 10 samples)
-                        devstd.Add(count, lastDevStd);
+                        standardDeviation.Add(count, lastStandardDeviation);
 
                         //check if already processed at least SmoothingWindow number of data, if so start drawing
                         if (count > Properties.Settings.Default.SmoothingWindow)
                         {
                             //drawing graphs (axis change and refresh of the graphs are done into the draw method)
-                            graphHandler.draw(Prog.mf.zgAcc, acc, Properties.Settings.Default.SmoothingWindow);
-                            graphHandler.draw(Prog.mf.zgGir, gir, Properties.Settings.Default.SmoothingWindow);
-                            graphHandler.draw(Prog.mf.zgMag, mag, Properties.Settings.Default.SmoothingWindow);
+                            graphHandler.draw(Prog.mainForm.zedgraphAccelerometer, accelerometer, Properties.Settings.Default.SmoothingWindow);
+                            graphHandler.draw(Prog.mainForm.zedgraphGyroscope, gyrometer, Properties.Settings.Default.SmoothingWindow);
+                            graphHandler.draw(Prog.mainForm.zedgraphMagnetometer, magnetometer, Properties.Settings.Default.SmoothingWindow);
 
-                            graphHandler.draw(Prog.mf.agf.zgStdDev, devstd, Properties.Settings.Default.SmoothingWindow);
-                            graphHandler.draw(Prog.mf.agf.zgXAxis, accx, Properties.Settings.Default.SmoothingWindow);
+                            graphHandler.draw(Prog.mainForm.agf.zedgraphStandardDeviation, standardDeviation, Properties.Settings.Default.SmoothingWindow);
+                            graphHandler.draw(Prog.mainForm.agf.zedgraphAccelerometerXaxis, accelerometerXaxis, Properties.Settings.Default.SmoothingWindow);
                         }
 
                         count++;
@@ -348,26 +348,26 @@ namespace ProgettoAdminReteFinal
                 }
                 
                 //draw last points (graph refresh is included into the method)
-                graphHandler.drawLast(Prog.mf.zgAcc, acc, count);
-                graphHandler.drawLast(Prog.mf.zgGir, gir, count);
-                graphHandler.drawLast(Prog.mf.zgMag, mag, count);
-                graphHandler.drawLast(Prog.mf.agf.zgStdDev, devstd, count);
-                graphHandler.drawLast(Prog.mf.agf.zgXAxis, accx, count);
+                graphHandler.drawLast(Prog.mainForm.zedgraphAccelerometer, accelerometer, count);
+                graphHandler.drawLast(Prog.mainForm.zedgraphGyroscope, gyrometer, count);
+                graphHandler.drawLast(Prog.mainForm.zedgraphMagnetometer, magnetometer, count);
+                graphHandler.drawLast(Prog.mainForm.agf.zedgraphStandardDeviation, standardDeviation, count);
+                graphHandler.drawLast(Prog.mainForm.agf.zedgraphAccelerometerXaxis, accelerometerXaxis, count);
 
-                Prog.mf.addText("Client disconnected ",2);
+                Prog.mainForm.addText("Client disconnected ",2);
 
                 //Setting up buttons states
-                if (Prog.mf.bExport.InvokeRequired)
-                    Prog.mf.bExport.Invoke((MethodInvoker)delegate()
+                if (Prog.mainForm.buttonExport.InvokeRequired)
+                    Prog.mainForm.buttonExport.Invoke((MethodInvoker)delegate()
                     {
-                        Prog.mf.bStartStop.Enabled = false;
-                        Prog.mf.bSettings.Enabled = true;
-                        Prog.mf.bReset.Enabled = true;
-                        Prog.mf.cbTurnStartStopShow.Enabled = true;
-                        Prog.mf.bExport.Enabled = true;
+                        Prog.mainForm.buttonStartStop.Enabled = false;
+                        Prog.mainForm.buttonSettings.Enabled = true;
+                        Prog.mainForm.butonReset.Enabled = true;
+                        Prog.mainForm.comboboxTurnStartStopShow.Enabled = true;
+                        Prog.mainForm.buttonExport.Enabled = true;
                     });
 
-                Prog.mf.addText("Server stopped",0);
+                Prog.mainForm.addText("Server stopped",0);
             }
         }
     }

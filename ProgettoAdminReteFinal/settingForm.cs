@@ -54,7 +54,7 @@ namespace ProgettoAdminReteFinal
         /// </summary>
         public static void serverSettings_OnClose(object sender, EventArgs e)
         {
-                Prog.mf.Enabled = true;
+                Prog.mainForm.Enabled = true;
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace ProgettoAdminReteFinal
         {
             //button cancel pressed = discard changed settings + close setting form
             this.Close();
-            Prog.mf.Enabled = true;
+            Prog.mainForm.Enabled = true;
         }
 
         /// <summary>

@@ -11,14 +11,14 @@ namespace ProgettoAdminReteFinal
     class Prog
     {
         /**main form*/
-        public static mainForm mf = null;
+        public static mainForm mainForm = null;
 
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
-            mf = new mainForm();
-            Application.Run(mf);
+            mainForm = new mainForm();
+            Application.Run(mainForm);
         }
     }
 }

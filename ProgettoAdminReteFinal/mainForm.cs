@@ -35,7 +35,7 @@ namespace ProgettoAdminReteFinal
             agf = new addGraphForm();
 
             //adding handler of startstop button click event
-            bStartStop.Click += new EventHandler(comHandler.bStart_Click);
+            buttonStartStop.Click += new EventHandler(comHandler.bStart_Click);
             //adding handlers of check boxes that allow the user to show/hide lines in graphs
             cbLeftAnkle.Click += new EventHandler(graphHandler.stateChanged);
             cbLeftWrist.Click += new EventHandler(graphHandler.stateChanged);
@@ -43,15 +43,15 @@ namespace ProgettoAdminReteFinal
             cbRightAnkle.Click += new EventHandler(graphHandler.stateChanged);
             cbRightWrist.Click += new EventHandler(graphHandler.stateChanged);
             //adding handler to check box used to show/hide turn start/stop recognition points
-            cbTurnStartStopShow.Click += new EventHandler(graphHandler.cbTurnStartStopShow_stateChanged);
+            comboboxTurnStartStopShow.Click += new EventHandler(graphHandler.cbTurnStartStopShow_stateChanged);
 
             //graphs init(multiple-line graphs)   control, title, xlabel, ylabel
-            new graphHandler(zgAcc, "Accelerometer", "", "module");
-            new graphHandler(zgGir, "Gyroscope"    , "", "module");
-            new graphHandler(zgMag, "Magnetometer" , "", "arctan");
+            new graphHandler(zedgraphAccelerometer, "Accelerometer", "", "module");
+            new graphHandler(zedgraphGyroscope, "Gyroscope"    , "", "module");
+            new graphHandler(zedgraphMagnetometer, "Magnetometer" , "", "arctan");
             //graph init(single-line graphs)     control, title, xlabel, ylabel, curvename
-            new graphHandler(agf.zgStdDev, "Standard Deviation",  "", "Dev Std", "devstd");
-            new graphHandler(agf.zgXAxis,  "Accelerometer X Axis","", "X",       "xaxis");
+            new graphHandler(agf.zedgraphStandardDeviation, "Standard Deviation",  "", "Dev Std", "devstd");
+            new graphHandler(agf.zedgraphAccelerometerXaxis,  "Accelerometer X Axis","", "X",       "xaxis");
         }
 
         /// <summary>

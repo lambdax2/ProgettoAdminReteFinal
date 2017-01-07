@@ -197,39 +197,39 @@ namespace ProgettoAdminReteFinal
             switch (((CheckBox)sender).Name)
             {
                 case "cbPelvis":
-                    Prog.mf.zgAcc.GraphPane.CurveList[0].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgGir.GraphPane.CurveList[0].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgMag.GraphPane.CurveList[0].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphAccelerometer.GraphPane.CurveList[0].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[0].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphMagnetometer.GraphPane.CurveList[0].IsVisible = ((CheckBox)sender).Checked;
                     break;
                 case "cbRightWrist":
-                    Prog.mf.zgAcc.GraphPane.CurveList[1].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgGir.GraphPane.CurveList[1].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgMag.GraphPane.CurveList[1].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphAccelerometer.GraphPane.CurveList[1].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[1].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphMagnetometer.GraphPane.CurveList[1].IsVisible = ((CheckBox)sender).Checked;
                     break;
                 case "cbLeftWrist":
-                    Prog.mf.zgAcc.GraphPane.CurveList[2].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgGir.GraphPane.CurveList[2].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgMag.GraphPane.CurveList[2].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphAccelerometer.GraphPane.CurveList[2].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[2].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphMagnetometer.GraphPane.CurveList[2].IsVisible = ((CheckBox)sender).Checked;
                     break;
                 case "cbRightAnkle":
-                    Prog.mf.zgAcc.GraphPane.CurveList[3].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgGir.GraphPane.CurveList[3].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgMag.GraphPane.CurveList[3].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphAccelerometer.GraphPane.CurveList[3].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[3].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphMagnetometer.GraphPane.CurveList[3].IsVisible = ((CheckBox)sender).Checked;
                     break;
                 case "cbLeftAnkle":
-                    Prog.mf.zgAcc.GraphPane.CurveList[4].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgGir.GraphPane.CurveList[4].IsVisible = ((CheckBox)sender).Checked;
-                    Prog.mf.zgMag.GraphPane.CurveList[4].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphAccelerometer.GraphPane.CurveList[4].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[4].IsVisible = ((CheckBox)sender).Checked;
+                    Prog.mainForm.zedgraphMagnetometer.GraphPane.CurveList[4].IsVisible = ((CheckBox)sender).Checked;
                     break;
             }
 
             //redraw graphs. axischange call to adapt graph axis to new visible curveset
-            Prog.mf.zgAcc.AxisChange();
-            Prog.mf.zgGir.AxisChange();
-            Prog.mf.zgMag.AxisChange();
-            Prog.mf.zgAcc.Refresh();
-            Prog.mf.zgGir.Refresh();
-            Prog.mf.zgMag.Refresh();
+            Prog.mainForm.zedgraphAccelerometer.AxisChange();
+            Prog.mainForm.zedgraphGyroscope.AxisChange();
+            Prog.mainForm.zedgraphMagnetometer.AxisChange();
+            Prog.mainForm.zedgraphAccelerometer.Refresh();
+            Prog.mainForm.zedgraphGyroscope.Refresh();
+            Prog.mainForm.zedgraphMagnetometer.Refresh();
         }
 
         /// <summary>
@@ -243,16 +243,16 @@ namespace ProgettoAdminReteFinal
             //if curvelist in greater than 5, we found some turns and added lines to mark turn start and stop
             ////so we go to show/hide (depends on checkbox state) those lines and the corrispondent legend items
             //else if curvelist isn't greater than 5, it means that we didn't found any turn, so nothing to show.
-            if (Prog.mf.zgGir.GraphPane.CurveList.Count > 5)
+            if (Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList.Count > 5)
             {
-                for (int i = 5; i < Prog.mf.zgGir.GraphPane.CurveList.Count; i++) {
-                        Prog.mf.zgGir.GraphPane.CurveList[i].IsVisible = ((CheckBox)sender).Checked; // hiding/showing turns start stop detection points 
-                        Prog.mf.zgGir.GraphPane.CurveList[i].Label.IsVisible = ((CheckBox)sender).Checked; // hiding/showing legend items of turns start stop detection points
+                for (int i = 5; i < Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList.Count; i++) {
+                        Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[i].IsVisible = ((CheckBox)sender).Checked; // hiding/showing turns start stop detection points 
+                        Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[i].Label.IsVisible = ((CheckBox)sender).Checked; // hiding/showing legend items of turns start stop detection points
                 }
 
                 //redraw graph.
-                Prog.mf.zgGir.AxisChange();
-                Prog.mf.zgGir.Refresh();
+                Prog.mainForm.zedgraphGyroscope.AxisChange();
+                Prog.mainForm.zedgraphGyroscope.Refresh();
             }
         }
     }

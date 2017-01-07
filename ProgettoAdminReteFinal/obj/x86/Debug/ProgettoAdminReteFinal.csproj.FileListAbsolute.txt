@@ -29,3 +29,7 @@ C:\Users\Matteo\Desktop\ProgettoAdminRete\ProgettoAdminReteFinal\obj\x86\Debug\P
 C:\Users\Matteo\Desktop\ProgettoAdminRete\ProgettoAdminReteFinal\obj\x86\Debug\ProgettoAdminReteFinal.pdb
 C:\Users\Matteo\Desktop\ProgettoAdminRete\ProgettoAdminReteFinal\bin\Debug\ProgettoAdminReteFinal.exe.CodeAnalysisLog.xml
 C:\Users\Matteo\Desktop\ProgettoAdminRete\ProgettoAdminReteFinal\bin\Debug\ProgettoAdminReteFinal.exe.lastcodeanalysissucceeded
+C:\Users\Matteo\Desktop\ProgettoAdminRete - Copia\ProgettoAdminReteFinal\bin\Debug\ProgettoAdminReteFinal.exe.config
+C:\Users\Matteo\Desktop\ProgettoAdminRete - Copia\ProgettoAdminReteFinal\bin\Debug\XML\ProgettoAdminReteFinal.XML
+C:\Users\Matteo\Desktop\ProgettoAdminRete - Copia\ProgettoAdminReteFinal\obj\x86\Debug\ProgettoAdminReteFinal.exe
+C:\Users\Matteo\Desktop\ProgettoAdminRete - Copia\ProgettoAdminReteFinal\obj\x86\Debug\ProgettoAdminReteFinal.pdb

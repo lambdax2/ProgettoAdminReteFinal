@@ -52,15 +52,15 @@ namespace ProgettoAdminReteFinal
                     Directory.CreateDirectory(_exportFolderPath);
 
                     //saving graphs as jpegs
-                    Prog.mf.zgAcc.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "Acc.jpg"), ImageFormat.Jpeg);
-                    Prog.mf.zgGir.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "Gir.jpg"), ImageFormat.Jpeg);
-                    Prog.mf.zgMag.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "Mag.jpg"), ImageFormat.Jpeg);
-                    Prog.mf.agf.zgStdDev.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "AtdDev.jpg"), ImageFormat.Jpeg);
-                    Prog.mf.agf.zgXAxis.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "XAxis.jpg"), ImageFormat.Jpeg);
+                    Prog.mainForm.zedgraphAccelerometer.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "Acc.jpg"), ImageFormat.Jpeg);
+                    Prog.mainForm.zedgraphGyroscope.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "Gir.jpg"), ImageFormat.Jpeg);
+                    Prog.mainForm.zedgraphMagnetometer.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "Mag.jpg"), ImageFormat.Jpeg);
+                    Prog.mainForm.agf.zedgraphStandardDeviation.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "AtdDev.jpg"), ImageFormat.Jpeg);
+                    Prog.mainForm.agf.zedgraphAccelerometerXaxis.GraphPane.GetImage().Save(System.IO.Path.Combine(_exportFolderPath, "XAxis.jpg"), ImageFormat.Jpeg);
                     
                     //writing log to text file
                     using (StreamWriter sw = new StreamWriter(System.IO.Path.Combine(_exportFolderPath, "Log.txt"), true))
-                        sw.Write(Prog.mf.tbLog.Text);
+                        sw.Write(Prog.mainForm.tbLog.Text);
 
                     //save path for the csv
                     string _csvFileFullPath = System.IO.Path.Combine(_exportFolderPath, "Values.csv");
@@ -77,12 +77,12 @@ namespace ProgettoAdminReteFinal
                     //data to be written is stored into a list containing arrays of strings: each array = 1 row of the csv
                     for (int k = 0; k < comHandler.nSensors; k++)
                     {
-                        for (int i = 0; i < comHandler.rawAcc[0].Count(); i++)
+                        for (int i = 0; i < comHandler.rawAccelerometer[0].Count(); i++)
                         {
-                            _output.Add(new string[]{comHandler.rawAcc[k][i].X.ToString(),comHandler.rawAcc[k][i].Y.ToString(),comHandler.rawAcc[k][i].Z.ToString(),"",
-                                                     comHandler.rawGyr[k][i].X.ToString(),comHandler.rawGyr[k][i].Y.ToString(),comHandler.rawGyr[k][i].Z.ToString(),"",
-                                                     comHandler.rawMag[k][i].X.ToString(),comHandler.rawMag[k][i].Y.ToString(),comHandler.rawMag[k][i].Z.ToString(),"",
-                                                     comHandler.acc[k][i].Y.ToString(),comHandler.gir[k][i].Y.ToString(),comHandler.mag[k][i].Y.ToString(),
+                            _output.Add(new string[]{comHandler.rawAccelerometer[k][i].X.ToString(),comHandler.rawAccelerometer[k][i].Y.ToString(),comHandler.rawAccelerometer[k][i].Z.ToString(),"",
+                                                     comHandler.rawGyrometer[k][i].X.ToString(),comHandler.rawGyrometer[k][i].Y.ToString(),comHandler.rawGyrometer[k][i].Z.ToString(),"",
+                                                     comHandler.rawMagnetometer[k][i].X.ToString(),comHandler.rawMagnetometer[k][i].Y.ToString(),comHandler.rawMagnetometer[k][i].Z.ToString(),"",
+                                                     comHandler.accelerometer[k][i].Y.ToString(),comHandler.gyrometer[k][i].Y.ToString(),comHandler.magnetometer[k][i].Y.ToString(),
                                                      Environment.NewLine});
                         }
                     }

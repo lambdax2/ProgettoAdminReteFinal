@@ -118,7 +118,7 @@ namespace ProgettoAdminReteFinal
                 if (stationingStatus != 1)
                 {
                     stationingStatus = 1;
-                    Prog.mf.addText("Steady \t\t\t ", 1);
+                    Prog.mainForm.addText("Steady \t\t\t ", 1);
                 }
             }
             else
@@ -126,7 +126,7 @@ namespace ProgettoAdminReteFinal
                 if (stationingStatus != 2)
                 {
                     stationingStatus = 2;
-                    Prog.mf.addText("Not steady \t\t ", 1);
+                    Prog.mainForm.addText("Not steady \t\t ", 1);
                 }
             }
         }
@@ -146,28 +146,28 @@ namespace ProgettoAdminReteFinal
                 if (_avg <= 2.7 && activityStatus != 1)
                 {
                     activityStatus = 1;  //under 2.7 -> (0,2.7]
-                    Prog.mf.addText("Lay \t\t\t ", 1);
+                    Prog.mainForm.addText("Lay \t\t\t ", 1);
                 }
                 else
                 {
                     if (_avg <= 3.7 && activityStatus != 2)
                     {
                         activityStatus = 2;  //between 2.7 and 3.7 -> (2.7,3.7]
-                        Prog.mf.addText("Lay/sit \t\t\t ", 1);
+                        Prog.mainForm.addText("Lay/sit \t\t\t ", 1);
                     }
                     else
                     {
                         if (_avg <= 7 && activityStatus != 3)
                         {
                             activityStatus = 3;  //between 3.7 and 7 -> (3.7,7]
-                            Prog.mf.addText("Sit \t\t\t ", 1);
+                            Prog.mainForm.addText("Sit \t\t\t ", 1);
                         }
                         else
                         {
                             if (activityStatus != 4)
                             {
                                 activityStatus = 4; //over 7 -> (7,+inf)
-                                Prog.mf.addText("Stand \t\t\t ", 1);
+                                Prog.mainForm.addText("Stand \t\t\t ", 1);
                             }
                         }
                     }
@@ -249,7 +249,7 @@ namespace ProgettoAdminReteFinal
                             logString += "at " + count * 0.02 + " seconds \r\n";
 
                             //adding string to log
-                            Prog.mf.addText(logString,1);
+                            Prog.mainForm.addText(logString,1);
                         }
                         else
                         {
@@ -259,16 +259,16 @@ namespace ProgettoAdminReteFinal
                             if (maxTurn >= turnLimit90_180)
                                 _rot180 = true;
                             if ((_left == false) & (_rot180 == true))
-                                Prog.mf.addText("Turn n°" + turnCounter + " right 180° \t\t ", 1);
+                                Prog.mainForm.addText("Turn n°" + turnCounter + " right 180° \t\t ", 1);
                                 //Prog.mf.addText("[" + DateTime.Now.ToString("HH:mm:ss") + "] " + "Turn n°" + turnCounter + " right 180°" +"[" + comHandler.count.ToString() + "] \r\n");   //girata a destra di 180
                             if ((_left == false) & (_rot180 == false))
-                                Prog.mf.addText("Turn n°" + turnCounter + " right 90° \t\t ", 1);
+                                Prog.mainForm.addText("Turn n°" + turnCounter + " right 90° \t\t ", 1);
                                 //Prog.mf.addText("[" + DateTime.Now.ToString("HH:mm:ss") + "] " + "Turn n°" + turnCounter + " right 90°" + "[" + comHandler.count.ToString() + "] \r\n");   //girata a destra di 90
                             if ((_left == true) & (_rot180 == true))
-                                Prog.mf.addText("Turn n°" + turnCounter + " left 180° \t\t ", 1);
+                                Prog.mainForm.addText("Turn n°" + turnCounter + " left 180° \t\t ", 1);
                                 //Prog.mf.addText("[" + DateTime.Now.ToString("HH:mm:ss") + "] " + "Turn n°" + turnCounter + " left 180°" + "[" + comHandler.count.ToString() + "] \r\n");   //girata a sinistra di 180
                             if ((_left == true) & (_rot180 == false))
-                                Prog.mf.addText("Turn n°" + turnCounter + " left 90° \t\t ", 1);
+                                Prog.mainForm.addText("Turn n°" + turnCounter + " left 90° \t\t ", 1);
                                 //Prog.mf.addText("[" + DateTime.Now.ToString("HH:mm:ss") + "] " + "Turn n°" + turnCounter + " left 90°"  + "[" + comHandler.count.ToString() + "] \r\n");   //girata a sinistra di 90
                         }
 
@@ -281,17 +281,17 @@ namespace ProgettoAdminReteFinal
                         //the combo box enables when all samples has been received.
                         stop = gyrPPL.Count - 1;
 
-                        Prog.mf.zgGir.GraphPane.AddCurve("Turn start " + turnCounter, new double[] { start, start }, new double[] { 5, 6 }, Color.BlueViolet, SymbolType.Triangle);
-                        Prog.mf.zgGir.GraphPane.AddCurve("Turn stop " + turnCounter, new double[] { stop, stop }, new double[] { 5, 6 }, Color.Aqua, SymbolType.TriangleDown);
+                        Prog.mainForm.zedgraphGyroscope.GraphPane.AddCurve("Turn start " + turnCounter, new double[] { start, start }, new double[] { 5, 6 }, Color.BlueViolet, SymbolType.Triangle);
+                        Prog.mainForm.zedgraphGyroscope.GraphPane.AddCurve("Turn stop " + turnCounter, new double[] { stop, stop }, new double[] { 5, 6 }, Color.Aqua, SymbolType.TriangleDown);
 
                         start = stop = -1;
 
                         //hiding curves
-                        Prog.mf.zgGir.GraphPane.CurveList[Prog.mf.zgGir.GraphPane.CurveList.Count - 1].IsVisible = false;
-                        Prog.mf.zgGir.GraphPane.CurveList[Prog.mf.zgGir.GraphPane.CurveList.Count - 2].IsVisible = false;
+                        Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList.Count - 1].IsVisible = false;
+                        Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList.Count - 2].IsVisible = false;
                         //hiding legend items
-                        Prog.mf.zgGir.GraphPane.CurveList[Prog.mf.zgGir.GraphPane.CurveList.Count - 2].Label.IsVisible = false;
-                        Prog.mf.zgGir.GraphPane.CurveList[Prog.mf.zgGir.GraphPane.CurveList.Count - 1].Label.IsVisible = false;
+                        Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList.Count - 2].Label.IsVisible = false;
+                        Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList[Prog.mainForm.zedgraphGyroscope.GraphPane.CurveList.Count - 1].Label.IsVisible = false;
                         #endregion
                     }
                 }

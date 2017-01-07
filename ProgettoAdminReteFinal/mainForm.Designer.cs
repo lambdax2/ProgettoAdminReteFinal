@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-            this.zgAcc = new ZedGraph.ZedGraphControl();
-            this.zgGir = new ZedGraph.ZedGraphControl();
-            this.zgMag = new ZedGraph.ZedGraphControl();
+            this.zedgraphAccelerometer = new ZedGraph.ZedGraphControl();
+            this.zedgraphGyroscope = new ZedGraph.ZedGraphControl();
+            this.zedgraphMagnetometer = new ZedGraph.ZedGraphControl();
             this.tbLog = new System.Windows.Forms.TextBox();
-            this.bStartStop = new System.Windows.Forms.Button();
-            this.bSettings = new System.Windows.Forms.Button();
-            this.bExport = new System.Windows.Forms.Button();
+            this.buttonStartStop = new System.Windows.Forms.Button();
+            this.buttonSettings = new System.Windows.Forms.Button();
+            this.buttonExport = new System.Windows.Forms.Button();
             this.bAddGraphs = new System.Windows.Forms.Button();
             this.cbPelvis = new System.Windows.Forms.CheckBox();
             this.cbLeftAnkle = new System.Windows.Forms.CheckBox();
@@ -44,64 +44,64 @@
             this.cbLeftWrist = new System.Windows.Forms.CheckBox();
             this.cbRightWrist = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.bReset = new System.Windows.Forms.Button();
+            this.butonReset = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbTurnStartStopShow = new System.Windows.Forms.CheckBox();
+            this.comboboxTurnStartStopShow = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // zgAcc
             // 
-            this.zgAcc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.zedgraphAccelerometer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.zgAcc.Location = new System.Drawing.Point(279, 12);
-            this.zgAcc.Name = "zgAcc";
-            this.zgAcc.ScrollGrace = 0D;
-            this.zgAcc.ScrollMaxX = 0D;
-            this.zgAcc.ScrollMaxY = 0D;
-            this.zgAcc.ScrollMaxY2 = 0D;
-            this.zgAcc.ScrollMinX = 0D;
-            this.zgAcc.ScrollMinY = 0D;
-            this.zgAcc.ScrollMinY2 = 0D;
-            this.zgAcc.Size = new System.Drawing.Size(955, 213);
-            this.zgAcc.TabIndex = 0;
-            this.zgAcc.TabStop = false;
+            this.zedgraphAccelerometer.Location = new System.Drawing.Point(279, 12);
+            this.zedgraphAccelerometer.Name = "zgAcc";
+            this.zedgraphAccelerometer.ScrollGrace = 0D;
+            this.zedgraphAccelerometer.ScrollMaxX = 0D;
+            this.zedgraphAccelerometer.ScrollMaxY = 0D;
+            this.zedgraphAccelerometer.ScrollMaxY2 = 0D;
+            this.zedgraphAccelerometer.ScrollMinX = 0D;
+            this.zedgraphAccelerometer.ScrollMinY = 0D;
+            this.zedgraphAccelerometer.ScrollMinY2 = 0D;
+            this.zedgraphAccelerometer.Size = new System.Drawing.Size(955, 213);
+            this.zedgraphAccelerometer.TabIndex = 0;
+            this.zedgraphAccelerometer.TabStop = false;
             // 
             // zgGir
             // 
-            this.zgGir.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.zedgraphGyroscope.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.zgGir.Location = new System.Drawing.Point(279, 241);
-            this.zgGir.Name = "zgGir";
-            this.zgGir.ScrollGrace = 0D;
-            this.zgGir.ScrollMaxX = 0D;
-            this.zgGir.ScrollMaxY = 0D;
-            this.zgGir.ScrollMaxY2 = 0D;
-            this.zgGir.ScrollMinX = 0D;
-            this.zgGir.ScrollMinY = 0D;
-            this.zgGir.ScrollMinY2 = 0D;
-            this.zgGir.Size = new System.Drawing.Size(955, 213);
-            this.zgGir.TabIndex = 1;
-            this.zgGir.TabStop = false;
+            this.zedgraphGyroscope.Location = new System.Drawing.Point(279, 241);
+            this.zedgraphGyroscope.Name = "zgGir";
+            this.zedgraphGyroscope.ScrollGrace = 0D;
+            this.zedgraphGyroscope.ScrollMaxX = 0D;
+            this.zedgraphGyroscope.ScrollMaxY = 0D;
+            this.zedgraphGyroscope.ScrollMaxY2 = 0D;
+            this.zedgraphGyroscope.ScrollMinX = 0D;
+            this.zedgraphGyroscope.ScrollMinY = 0D;
+            this.zedgraphGyroscope.ScrollMinY2 = 0D;
+            this.zedgraphGyroscope.Size = new System.Drawing.Size(955, 213);
+            this.zedgraphGyroscope.TabIndex = 1;
+            this.zedgraphGyroscope.TabStop = false;
             // 
             // zgMag
             // 
-            this.zgMag.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.zedgraphMagnetometer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.zgMag.Location = new System.Drawing.Point(279, 470);
-            this.zgMag.Name = "zgMag";
-            this.zgMag.ScrollGrace = 0D;
-            this.zgMag.ScrollMaxX = 0D;
-            this.zgMag.ScrollMaxY = 0D;
-            this.zgMag.ScrollMaxY2 = 0D;
-            this.zgMag.ScrollMinX = 0D;
-            this.zgMag.ScrollMinY = 0D;
-            this.zgMag.ScrollMinY2 = 0D;
-            this.zgMag.Size = new System.Drawing.Size(955, 213);
-            this.zgMag.TabIndex = 2;
-            this.zgMag.TabStop = false;
+            this.zedgraphMagnetometer.Location = new System.Drawing.Point(279, 470);
+            this.zedgraphMagnetometer.Name = "zgMag";
+            this.zedgraphMagnetometer.ScrollGrace = 0D;
+            this.zedgraphMagnetometer.ScrollMaxX = 0D;
+            this.zedgraphMagnetometer.ScrollMaxY = 0D;
+            this.zedgraphMagnetometer.ScrollMaxY2 = 0D;
+            this.zedgraphMagnetometer.ScrollMinX = 0D;
+            this.zedgraphMagnetometer.ScrollMinY = 0D;
+            this.zedgraphMagnetometer.ScrollMinY2 = 0D;
+            this.zedgraphMagnetometer.Size = new System.Drawing.Size(955, 213);
+            this.zedgraphMagnetometer.TabIndex = 2;
+            this.zedgraphMagnetometer.TabStop = false;
             // 
             // tbLog
             // 
@@ -118,33 +118,33 @@
             // 
             // bStartStop
             // 
-            this.bStartStop.Location = new System.Drawing.Point(8, 8);
-            this.bStartStop.Name = "bStartStop";
-            this.bStartStop.Size = new System.Drawing.Size(80, 24);
-            this.bStartStop.TabIndex = 0;
-            this.bStartStop.Text = "start";
-            this.bStartStop.UseVisualStyleBackColor = true;
+            this.buttonStartStop.Location = new System.Drawing.Point(8, 8);
+            this.buttonStartStop.Name = "bStartStop";
+            this.buttonStartStop.Size = new System.Drawing.Size(80, 24);
+            this.buttonStartStop.TabIndex = 0;
+            this.buttonStartStop.Text = "start";
+            this.buttonStartStop.UseVisualStyleBackColor = true;
             // 
             // bSettings
             // 
-            this.bSettings.Location = new System.Drawing.Point(8, 688);
-            this.bSettings.Name = "bSettings";
-            this.bSettings.Size = new System.Drawing.Size(80, 24);
-            this.bSettings.TabIndex = 3;
-            this.bSettings.Text = "settings";
-            this.bSettings.UseVisualStyleBackColor = true;
-            this.bSettings.Click += new System.EventHandler(this.bSettings_Click);
+            this.buttonSettings.Location = new System.Drawing.Point(8, 688);
+            this.buttonSettings.Name = "bSettings";
+            this.buttonSettings.Size = new System.Drawing.Size(80, 24);
+            this.buttonSettings.TabIndex = 3;
+            this.buttonSettings.Text = "settings";
+            this.buttonSettings.UseVisualStyleBackColor = true;
+            this.buttonSettings.Click += new System.EventHandler(this.bSettings_Click);
             // 
             // bExport
             // 
-            this.bExport.Enabled = false;
-            this.bExport.Location = new System.Drawing.Point(192, 688);
-            this.bExport.Name = "bExport";
-            this.bExport.Size = new System.Drawing.Size(80, 24);
-            this.bExport.TabIndex = 4;
-            this.bExport.Text = "export";
-            this.bExport.UseVisualStyleBackColor = true;
-            this.bExport.Click += new System.EventHandler(this.bExport_Click);
+            this.buttonExport.Enabled = false;
+            this.buttonExport.Location = new System.Drawing.Point(192, 688);
+            this.buttonExport.Name = "bExport";
+            this.buttonExport.Size = new System.Drawing.Size(80, 24);
+            this.buttonExport.TabIndex = 4;
+            this.buttonExport.Text = "export";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.bExport_Click);
             // 
             // bAddGraphs
             // 
@@ -238,14 +238,14 @@
             // 
             // bReset
             // 
-            this.bReset.Enabled = false;
-            this.bReset.Location = new System.Drawing.Point(192, 8);
-            this.bReset.Name = "bReset";
-            this.bReset.Size = new System.Drawing.Size(80, 24);
-            this.bReset.TabIndex = 2;
-            this.bReset.Text = "Reset";
-            this.bReset.UseVisualStyleBackColor = true;
-            this.bReset.Click += new System.EventHandler(this.bReset_Click);
+            this.butonReset.Enabled = false;
+            this.butonReset.Location = new System.Drawing.Point(192, 8);
+            this.butonReset.Name = "bReset";
+            this.butonReset.Size = new System.Drawing.Size(80, 24);
+            this.butonReset.TabIndex = 2;
+            this.butonReset.Text = "Reset";
+            this.butonReset.UseVisualStyleBackColor = true;
+            this.butonReset.Click += new System.EventHandler(this.bReset_Click);
             // 
             // label2
             // 
@@ -258,22 +258,22 @@
             // 
             // cbTurnStartStopShow
             // 
-            this.cbTurnStartStopShow.AutoSize = true;
-            this.cbTurnStartStopShow.Enabled = false;
-            this.cbTurnStartStopShow.Location = new System.Drawing.Point(1216, 696);
-            this.cbTurnStartStopShow.Name = "cbTurnStartStopShow";
-            this.cbTurnStartStopShow.Size = new System.Drawing.Size(15, 14);
-            this.cbTurnStartStopShow.TabIndex = 12;
-            this.cbTurnStartStopShow.UseVisualStyleBackColor = true;
+            this.comboboxTurnStartStopShow.AutoSize = true;
+            this.comboboxTurnStartStopShow.Enabled = false;
+            this.comboboxTurnStartStopShow.Location = new System.Drawing.Point(1216, 696);
+            this.comboboxTurnStartStopShow.Name = "cbTurnStartStopShow";
+            this.comboboxTurnStartStopShow.Size = new System.Drawing.Size(15, 14);
+            this.comboboxTurnStartStopShow.TabIndex = 12;
+            this.comboboxTurnStartStopShow.UseVisualStyleBackColor = true;
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 725);
-            this.Controls.Add(this.cbTurnStartStopShow);
+            this.Controls.Add(this.comboboxTurnStartStopShow);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.bReset);
+            this.Controls.Add(this.butonReset);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbRightWrist);
             this.Controls.Add(this.cbLeftWrist);
@@ -281,13 +281,13 @@
             this.Controls.Add(this.cbLeftAnkle);
             this.Controls.Add(this.cbPelvis);
             this.Controls.Add(this.bAddGraphs);
-            this.Controls.Add(this.bExport);
-            this.Controls.Add(this.bSettings);
-            this.Controls.Add(this.bStartStop);
+            this.Controls.Add(this.buttonExport);
+            this.Controls.Add(this.buttonSettings);
+            this.Controls.Add(this.buttonStartStop);
             this.Controls.Add(this.tbLog);
-            this.Controls.Add(this.zgMag);
-            this.Controls.Add(this.zgGir);
-            this.Controls.Add(this.zgAcc);
+            this.Controls.Add(this.zedgraphMagnetometer);
+            this.Controls.Add(this.zedgraphGyroscope);
+            this.Controls.Add(this.zedgraphAccelerometer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -302,19 +302,19 @@
         #endregion
 
         /**Graph displaying accelerometer data*/
-        public ZedGraph.ZedGraphControl zgAcc;
+        public ZedGraph.ZedGraphControl zedgraphAccelerometer;
         /**Graph displaying gyroscope data*/
-        public ZedGraph.ZedGraphControl zgGir;
+        public ZedGraph.ZedGraphControl zedgraphGyroscope;
         /**Graph displaying magnetometer data*/
-        public ZedGraph.ZedGraphControl zgMag;
+        public ZedGraph.ZedGraphControl zedgraphMagnetometer;
         /**Log textbox*/
         public System.Windows.Forms.TextBox tbLog;
         /**Button to start/stop the server*/
-        public System.Windows.Forms.Button bStartStop;
+        public System.Windows.Forms.Button buttonStartStop;
         /**Button to open setting form*/
-        public System.Windows.Forms.Button bSettings;
+        public System.Windows.Forms.Button buttonSettings;
         /**Button to open export form*/
-        public System.Windows.Forms.Button bExport;
+        public System.Windows.Forms.Button buttonExport;
         /**Button to open additional graph form*/
         public System.Windows.Forms.Button bAddGraphs;
         /** @name checkGroup
@@ -329,10 +329,10 @@
         ///@} 
         private System.Windows.Forms.Label label1;
         /**Button to reset the server*/
-        public System.Windows.Forms.Button bReset;
+        public System.Windows.Forms.Button butonReset;
         private System.Windows.Forms.Label label2;
         /**Button to show start and stop points of the turns (start is represented by a vertical blueviolet line, stop is represented by a vertical aqua line)*/
-        public System.Windows.Forms.CheckBox cbTurnStartStopShow;
+        public System.Windows.Forms.CheckBox comboboxTurnStartStopShow;
     }
 }
 

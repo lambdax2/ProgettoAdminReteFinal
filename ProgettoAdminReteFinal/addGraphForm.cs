@@ -29,7 +29,7 @@ namespace ProgettoAdminReteFinal
             //hiding
             ((addGraphForm)sender).Hide();
             //reenabling addgraph button
-            Prog.mf.bAddGraphs.Enabled = true;
+            Prog.mainForm.bAddGraphs.Enabled = true;
         }
     }
 }
